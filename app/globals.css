@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { --bg: #FAF8F4; }
+html, body { background: var(--bg); }
+
+@layer base {
+  h1 {@apply text-4xl md:text-6xl font-semibold tracking-tight;}
+  h2 {@apply text-3xl md:text-4xl font-semibold;}
+  p {@apply text-base leading-relaxed text-brand-ink/80;}
+}
+
+@layer components {
+  .btn {@apply inline-flex items-center justify-center rounded-full px-6 py-3 font-medium shadow-soft hover:shadow transition;}
+  .btn-brand {@apply bg-brand-green text-white;}
+  .pill {@apply rounded-full border border-black/10 bg-white/60 backdrop-blur px-3 py-1 text-sm;}
+}
+
+.hero-noise { position:absolute; inset:-20%; background-image:radial-gradient(rgba(0,0,0,0.04) 1px,transparent 1px); background-size:12px 12px; mask-image:radial-gradient(ellipse at center, black 55%, transparent 75%); pointer-events:none;}
+.ring-grad { position:absolute; inset:-10%; background:radial-gradient(60% 60% at 50% 40%, rgba(105,207,97,0.18), transparent 60%); pointer-events:none;}
