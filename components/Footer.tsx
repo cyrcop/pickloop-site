@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
-    <footer className="border-top border-black/5 py-10 text-center text-sm text-black/60">
-      <div className="container">© {new Date().getFullYear()} Pickloop — Tous droits réservés.</div>
+    <footer className="footer" id="contact">
+      <p>© {new Date().getFullYear()} Pickloop — KEVCYR SASU — RCS Avignon 989 699 608 — pickloop.fr</p>
     </footer>
   );
 }
