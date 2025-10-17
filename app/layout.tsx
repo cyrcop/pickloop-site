@@ -1,13 +1,12 @@
 // app/layout.tsx
 import "./globals.css";
 import type { Metadata, Viewport } from "next";
+import Header from "@/components/Header";
 
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://pickloop-site-git-main-cyril-coppins-projects.vercel.app";
-
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://pickloop.fr";
 const title = "Pickloop – Louez. Utilisez. Répétez.";
 const description =
-  "Des casiers 24/7 pour emprunter du matériel sport & loisir, au bon endroit, au bon moment — sans achat, sans contraintes.";
+  "Des casiers 24/7 pour emprunter du matériel sport & loisir, au bon endroit, au bon moment — service clé en main pour les communes et les usagers.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -17,7 +16,7 @@ export const metadata: Metadata = {
   icons: [
     { rel: "icon", url: "/favicon.svg", type: "image/svg+xml" },
     { rel: "icon", url: "/favicon.ico" },
-    { rel: "apple-touch-icon", url: "/apple-touch-icon.png" }
+    { rel: "apple-touch-icon", url: "/apple-touch-icon.png" },
   ],
   openGraph: {
     type: "website",
@@ -25,25 +24,19 @@ export const metadata: Metadata = {
     siteName: "Pickloop – Pick, use, loop",
     title,
     description,
-    images: [{ url: "/og-default.jpg", width: 1200, height: 630 }]
+    images: [{ url: "/og-default.jpg", width: 1200, height: 630 }],
   },
-  twitter: {
-    card: "summary_large_image",
-    title,
-    description,
-    images: ["/og-default.jpg"]
-  }
+  twitter: { card: "summary_large_image", title, description, images: ["/og-default.jpg"] },
 };
-
-// ✅ Next.js (App Router) veut que themeColor soit dans `viewport`, pas dans `metadata`
-export const viewport: Viewport = {
-  themeColor: "#233C2E"
-};
+export const viewport: Viewport = { themeColor: "#233C2E" };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="fr">
-      <body>{children}</body>
+      <body>
+        <Header />
+        {children}
+      </body>
     </html>
   );
 }
