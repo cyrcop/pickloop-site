@@ -15,8 +15,7 @@ export const metadata: Metadata = {
   alternates: { canonical: siteUrl },
   icons: [
     { rel: "icon", url: "/favicon.svg", type: "image/svg+xml" },
-    { rel: "icon", url: "/favicon.ico" },
-    { rel: "apple-touch-icon", url: "/apple-touch-icon.png" },
+    { rel: "apple-touch-icon", url: "/apple-touch-icon.png" }
   ],
   openGraph: {
     type: "website",
@@ -24,10 +23,11 @@ export const metadata: Metadata = {
     siteName: "Pickloop – Pick, use, loop",
     title,
     description,
-    images: [{ url: "/og-default.jpg", width: 1200, height: 630 }],
+    images: [{ url: "/og-default.jpg", width: 1200, height: 630 }]
   },
-  twitter: { card: "summary_large_image", title, description, images: ["/og-default.jpg"] },
+  twitter: { card: "summary_large_image", title, description, images: ["/og-default.jpg"] }
 };
+
 export const viewport: Viewport = { themeColor: "#233C2E" };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
