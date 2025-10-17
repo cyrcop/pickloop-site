@@ -2,7 +2,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
-// components/Hero.tsx
 export default function Hero() {
   return (
     <section className="hero">
