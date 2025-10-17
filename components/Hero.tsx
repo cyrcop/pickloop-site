@@ -5,7 +5,7 @@ export default function Hero() {
       <div className="hero-inner">
         {/* Logo au-dessus du titre */}
         <img
-          src="/logo.svg"
+          src="/logo-header.png"
           alt="Pickloop"
           className="hero-logo"
           width={120}
