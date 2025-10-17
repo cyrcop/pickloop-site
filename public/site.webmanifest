@@ -1,0 +1,9 @@
+{
+  "name": "Pickloop",
+  "short_name": "Pickloop",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FAF8F4",
+  "theme_color": "#233C2E",
+  "icons": [{ "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }]
+}
