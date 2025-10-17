@@ -1,6 +1,7 @@
+<!-- public/favicon.svg -->
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
   <rect width="256" height="256" rx="56" fill="#233C2E"/>
-  <g fill="#FAF8F4">
+  <g fill="#FAF8F4" stroke="#FAF8F4" stroke-width="0">
     <circle cx="128" cy="128" r="62" fill="none" stroke="#FAF8F4" stroke-width="18"/>
     <path d="M168 96v48h-48" fill="none" stroke="#FAF8F4" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M168 96h-36" fill="none" stroke="#FAF8F4" stroke-width="18" stroke-linecap="round"/>
