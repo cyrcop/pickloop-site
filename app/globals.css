@@ -1,94 +1,66 @@
-/* ====== Thème Pickloop (charte) ====== */
+/* ====== Thème Pickloop ====== */
 :root{
-  --vert:#233C2E;      /* Vert Pickloop */
-  --noir:#000000;      /* Noir logo */
-  --fond:#FAF8F4;      /* Fond clair */
-  --gris:#E6E6E6;      /* Gris UI */
-  --accent:#A7D8A3;    /* Vert clair accent */
-  --ink:#0E1113;
-  --muted:#6B7280;
-  --shadow:0 18px 60px rgba(0,0,0,.12);
+  --vert:#233C2E; --noir:#000; --fond:#FAF8F4; --gris:#E6E6E6; --accent:#A7D8A3;
+  --ink:#0E1113; --muted:#6B7280; --shadow:0 18px 60px rgba(0,0,0,.12);
 }
 
 *{box-sizing:border-box} html,body{margin:0;padding:0}
 img{max-width:100%;display:block} a{text-decoration:none;color:inherit}
-body{
-  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-  background: var(--fond); color: var(--ink); line-height:1.55;
-}
+body{font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  background: var(--fond); color: var(--ink); line-height:1.55;}
 
-/* ====== Header ====== */
-.header{ position:sticky; top:0; z-index:50; backdrop-filter:saturate(180%) blur(8px);
-  background: color-mix(in srgb, var(--fond) 70%, white 30%); border-bottom:1px solid #eee; }
-.nav{ max-width:1200px; margin:0 auto; padding:14px 20px; display:flex; align-items:center; gap:16px; justify-content:space-between; }
+/* ====== HEADER SUR LE HERO (transparent, liens blancs) ====== */
+.header{ position:sticky; top:0; z-index:50; }
+.header--over-hero{
+  position: absolute; /* pour que le dégradé commence dès le header */
+  inset: 0 auto auto 0;
+  background: transparent; border-bottom: none;
+}
+.nav{
+  width:100%; max-width:1200px; margin:0 auto; padding: 14px 20px;
+  display:flex; align-items:center; justify-content:space-between; gap:16px;
+}
 .brand{ display:flex; align-items:center; gap:12px }
-.brand img{ width:36px; height:36px }
-.brand .word{ font-weight:800; letter-spacing:.2px }
-.slogan{ color:var(--muted); font-size:14px }
+.brand-logo{ height: 42px; width:auto; }
+@media (min-width: 980px){ .brand-logo{ height: 54px; } }
+
+/* Logo clair (converti en blanc par filtre) */
+.brand-logo--light{ filter: brightness(0) invert(1); opacity:.96; }
+
+/* Liens de nav en blanc */
+.nav-links{ display:flex; gap:20px; align-items:center; }
+.nav-links a{ color: rgba(255,255,255,.92); font-weight:700; font-size:15px; text-shadow:0 1px 2px rgba(0,0,0,.25); }
+.nav-links a:hover{ color:#fff; }
 
 /* ====== Mise en page ====== */
 main{ display:flex; flex-direction:column; gap:80px }
 section{ width:min(1200px,92vw); margin-inline:auto }
 
-/* ====== HERO (full-bleed + plein écran) ====== */
-/* La règle ci-dessous annule le conteneur restreint pour le hero :
-   on le force à s'étendre sur TOUTE la largeur de la fenêtre. */
+/* ====== HERO full-bleed, plein écran, dégradé charte dès le header ====== */
 section.hero{ width:100vw; max-width:100vw; margin:0; }
 
 .hero{
   position:relative; min-height:clamp(560px, 92vh, 880px);
   display:grid; place-items:center; overflow:hidden;
   background:
-    /* si tu ajoutes /hero-bg.jpg dans /public, il sera utilisé en fond (optionnel) */
-    linear-gradient(180deg, #233C2E 0%, #2F5E49 45%, #A7D8A3 100%);
+    linear-gradient(180deg, #1a2c25 0%, #233C2E 30%, #2E5C48 55%, #A7D8A3 100%);
   color:#fff;
 }
-.hero::after{ content:""; position:absolute; inset:0;
-  background:linear-gradient(180deg, rgba(0,0,0,.20) 0%, rgba(0,0,0,.05) 45%, rgba(0,0,0,.12) 100%); }
-.hero .hero-inner{ position:relative; z-index:1; width:min(1100px,92vw); text-align:center }
+.hero::after{
+  content:""; position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(0,0,0,.20) 0%, rgba(0,0,0,.05) 45%, rgba(0,0,0,.12) 100%);
+}
+.hero .hero-inner{ position:relative; z-index:1; width:min(1100px,92vw); text-align:center; padding-top: 80px; }
 
-.hero-logo{ margin:0 auto 16px; width:120px; height:auto; filter:drop-shadow(0 6px 24px rgba(0,0,0,.25)); }
-
+.hero-logo{ margin: 0 auto 16px; }
+.hero-logo--light{ filter: brightness(0) invert(1); } /* blanc/crème */
 .hero h1{ font-size: clamp(36px, 7vw, 80px); line-height:1.05; margin:0 0 12px; font-weight:900; letter-spacing:-.02em }
 .subtitle{ font-size: clamp(16px, 2.1vw, 22px); opacity:.95; margin:0 auto; max-width: 880px }
 .cta{ margin-top: clamp(16px, 3vw, 34px); display:flex; gap:14px; justify-content:center; flex-wrap:wrap }
-.btn{ display:inline-flex; align-items:center; justify-content:center;
-  padding: 13px 22px; border-radius: 12px; font-weight:800;
+.btn{ display:inline-flex; align-items:center; justify-content:center; padding: 13px 22px; border-radius: 12px; font-weight:800;
   background:#fff; color:#2C7D57; border:1px solid rgba(255,255,255,.35);
   box-shadow: var(--shadow); transition: transform .2s ease, box-shadow .2s ease; }
 .btn:hover{ transform:translateY(-2px); box-shadow:0 24px 64px rgba(0,0,0,.18) }
 .btn.secondary{ background:transparent; color:#fff; border-color: rgba(255,255,255,.55) }
 
-/* ===== Promesses ===== */
-.promises{ display:grid; grid-template-columns:repeat(12,1fr); gap:22px; }
-.promises .card{
-  grid-column:span 12; background:#fff; border:1px solid var(--gris); border-radius:18px;
-  padding: clamp(18px,2.2vw,28px); box-shadow: var(--shadow); text-align:center;
-  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
-}
-.promises .card:hover{ transform:translateY(-3px); box-shadow:0 26px 70px rgba(0,0,0,.16); border-color: var(--accent) }
-.promises h3{ margin:6px 0 6px; font-size: clamp(18px, 2.2vw, 24px) }
-.promises p{ margin:0; color:var(--muted) }
-@media (min-width:640px){ .promises .card{ grid-column:span 6 } }
-@media (min-width:980px){ .promises .card{ grid-column:span 3 } }
-
-/* ===== Étapes ===== */
-.steps{ display:grid; grid-template-columns:repeat(12,1fr); gap:24px }
-.steps .step{ grid-column:span 12; background: #fff; border:1px solid #eee; border-radius:18px;
-  padding: clamp(18px, 2.2vw, 28px); box-shadow: var(--shadow); }
-@media (min-width:768px){ .steps .step{ grid-column: span 4 } }
-.badge{ display:inline-flex; align-items:center; justify-content:center;
-  width:42px; height:42px; border-radius:999px; background: var(--vert); color:#fff; font-weight:900;
-  box-shadow:0 8px 24px rgba(35,60,46,.25); margin-bottom:8px }
-.steps h4{ margin:0 0 6px; font-size: clamp(18px, 2vw, 22px) }
-.steps p{ margin:0; color:var(--muted) }
-
-/* ===== Footer ===== */
-.footer{ text-align:center; color: var(--muted); font-size:14px; padding: 26px; border-top:1px solid #eee; margin-top:24px }
-/* Header : taille de logo et liens plus visibles */
-.brand-logo{ height: 40px; width:auto; }
-@media (min-width: 980px){ .brand-logo{ height: 48px; } }
-
-.nav-links{ display:flex; gap:18px; align-items:center; }
-.nav-links a{ color:#475569; font-weight:600; font-size:15px; }
-.nav-links a:hover{ color:#1f2937; }
+/* ===== Promesses / Étapes / Footer (inchangés si tu as déjà nos styles) ===== */
