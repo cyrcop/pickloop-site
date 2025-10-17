@@ -85,3 +85,10 @@ section.hero{ width:100vw; max-width:100vw; margin:0; }
 
 /* ===== Footer ===== */
 .footer{ text-align:center; color: var(--muted); font-size:14px; padding: 26px; border-top:1px solid #eee; margin-top:24px }
+/* Header : taille de logo et liens plus visibles */
+.brand-logo{ height: 40px; width:auto; }
+@media (min-width: 980px){ .brand-logo{ height: 48px; } }
+
+.nav-links{ display:flex; gap:18px; align-items:center; }
+.nav-links a{ color:#475569; font-weight:600; font-size:15px; }
+.nav-links a:hover{ color:#1f2937; }
