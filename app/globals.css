@@ -26,21 +26,27 @@ body{
   position: absolute; inset: 0 auto auto 0;
   background: transparent; border-bottom:none;
 }
+/* --- HEADER : logo aligné à la ligne des liens, même hauteur visuelle --- */
 .nav{
-  width:100%; max-width:1200px; margin:0 auto; padding: 14px 20px;
+  width:100%; max-width:1200px; margin:0 auto;
+  padding: 10px 20px;               /* header un peu plus fin */
   display:flex; align-items:center; justify-content:space-between; gap:16px;
 }
-.brand{ display:flex; align-items:center; gap:12px }
 
-/* logo header plus grand */
-.brand-logo{ height: 72px; width:auto; }              /* avant: 48px */
-@media (min-width: 980px){ .brand-logo{ height: 92px;} }  /* avant: 60px */
-/* transformer le mot-symbole vert en crème sur fond sombre */
+/* On contraint le logo par la hauteur de ligne des liens (~32-34px) */
+.brand-logo{
+  height: 28px; width:auto;         /* même bloc visuel que les liens */
+  vertical-align: middle;
+}
+@media (min-width: 980px){ .brand-logo{ height: 32px; } }
 .brand-logo--cream{ filter: brightness(0) invert(1) saturate(80%); opacity:.96; }
 
-/* Liens de nav en blanc */
+/* Liens (inchangé) */
 .nav-links{ display:flex; gap:22px; align-items:center; }
-.nav-links a{ color: rgba(255,255,255,.92); font-weight:700; font-size:15px; text-shadow:0 1px 2px rgba(0,0,0,.25); }
+.nav-links a{
+  color: rgba(255,255,255,.92); font-weight:700; font-size:16px; line-height: 1;
+  text-shadow:0 1px 2px rgba(0,0,0,.25);
+}
 .nav-links a:hover{ color:#fff; }
 
 /* ====== Mise en page ====== */
