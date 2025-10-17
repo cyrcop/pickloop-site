@@ -3,13 +3,13 @@ export default function Hero() {
   return (
     <section className="hero">
       <div className="hero-inner">
-        {/* Logo au-dessus du titre */}
+        {/* Mot-symbole blanc/crème au-dessus du titre */}
         <img
-          src="/logo-header.png"
+          src="/logo-wordmark.png"
           alt="Pickloop"
-          className="hero-logo"
-          width={120}
-          height={120}
+          className="hero-logo hero-logo--light"
+          width={220}
+          height={64}
         />
 
         <h1>Louez. Utilisez. Répétez.</h1>
