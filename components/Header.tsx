@@ -3,12 +3,12 @@ export default function Header() {
   return (
     <header className="header header--over-hero">
       <nav className="nav" aria-label="Navigation principale">
-        {/* Logo wordmark sans slogan */}
         <a href="/" className="brand" aria-label="Accueil Pickloop">
+          {/* Logo mot-symbole sans slogan */}
           <img
             src="/logo-wordmark.png"
             alt="Pickloop"
-            className="brand-logo brand-logo--light"
+            className="brand-logo brand-logo--cream"
           />
         </a>
 
