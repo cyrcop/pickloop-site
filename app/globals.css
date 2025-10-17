@@ -32,8 +32,8 @@ body{
 }
 .brand{ display:flex; align-items:center; gap:12px }
 /* logo header plus grand */
-.brand-logo{ height: 48px; width:auto; }
-@media (min-width: 980px){ .brand-logo{ height: 60px; } }
+.brand-logo{ height: 72px; width:auto; }              /* avant: 48px */
+@media (min-width: 980px){ .brand-logo{ height: 92px;} }  /* avant: 60px */
 /* transformer le mot-symbole vert en crème sur fond sombre */
 .brand-logo--cream{ filter: brightness(0) invert(1) saturate(80%); opacity:.96; }
 
@@ -50,7 +50,8 @@ section{ width:min(1200px,92vw); margin-inline:auto }
 section.hero{ width:100vw; max-width:100vw; margin:0; }
 
 .hero{
-  position:relative; min-height:clamp(560px, 92vh, 880px);
+  position:relative;
+  min-height: 100vh;                    /* avant: 92vh max 880 */
   display:grid; place-items:center; overflow:hidden;
   background:
     linear-gradient(180deg, #1a2c25 0%, #233C2E 28%, #2E5C48 56%, #A7D8A3 100%);
@@ -63,28 +64,21 @@ section.hero{ width:100vw; max-width:100vw; margin:0; }
 /* un peu d'air sous le header pour le hero */
 .hero .hero-inner{
   position:relative; z-index:1;
-  width:min(1100px,92vw); text-align:center; padding-top: 86px;
-}
+  width:min(1100px,92vw); text-align:center;
+  padding-top: 110px;                   /* plus d’air sous le header agrandi */
 /* logo hero en blanc/crème, sans distorsion (hauteur fixe) */
-.hero-logo{ height:84px; width:auto; margin: 0 auto 16px; }
-@media (min-width:980px){ .hero-logo{ height:110px; } }
+.hero-logo{ height: 220px; width:auto; margin: 0 auto 18px; }  /* avant: 84→110px */
+@media (min-width:980px){ .hero-logo{ height: 280px; } }       /* ~x4 la taille */
 .hero-logo--cream{ filter: brightness(0) invert(1) saturate(80%); }
-
 .hero h1{
-  font-size: clamp(36px, 7vw, 80px); line-height:1.05; margin:0 0 12px;
-  font-weight:900; letter-spacing:-.02em;
+  font-size: clamp(42px, 8vw, 96px);    /* légère montée pour équilibrer le logo + grand */
+  line-height:1.05; margin:0 0 12px; font-weight:900; letter-spacing:-.02em;
 }
-.subtitle{
-  font-size: clamp(16px, 2.1vw, 22px); opacity:.95; margin:0 auto; max-width: 880px;
-}
-.cta{
-  margin-top: clamp(16px, 3vw, 34px); display:flex; gap:14px; justify-content:center; flex-wrap:wrap;
-}
-.btn{
-  display:inline-flex; align-items:center; justify-content:center; padding: 13px 22px; border-radius: 12px; font-weight:800;
-  background:#fff; color:#2C7D57; border:1px solid rgba(255,255,255,.35);
-  box-shadow: var(--shadow); transition: transform .2s ease, box-shadow .2s ease;
-}
+.subtitle{ font-size: clamp(16px, 2.1vw, 22px); opacity:.95; margin:0 auto; max-width: 880px }
+.cta{ margin-top: clamp(16px, 3vw, 34px); display:flex; gap:14px; justify-content:center; flex-wrap:wrap }
+.btn{ display:inline-flex; align-items:center; justify-content:center; padding: 13px 22px; border-radius: 12px; font-weight:800;
+  background:#fff; color:#2C7D57; border:1px solid rgba(255,255,255,.35); box-shadow: var(--shadow);
+  transition: transform .2s ease, box-shadow .2s ease; }
 .btn:hover{ transform:translateY(-2px); box-shadow:0 24px 64px rgba(0,0,0,.18) }
 .btn.secondary{ background:transparent; color:#fff; border-color: rgba(255,255,255,.55) }
 
