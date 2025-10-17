@@ -1,4 +1,3 @@
-// components/Promises.tsx
 export default function Promises() {
   const items = [
     {
