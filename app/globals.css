@@ -33,12 +33,16 @@ body{
   display:flex; align-items:center; justify-content:space-between; gap:16px;
 }
 
-/* On contraint le logo par la hauteur de ligne des liens (~32-34px) */
-.brand-logo{
-  height: 28px; width:auto;         /* même bloc visuel que les liens */
+.brand-logo {
+  height: 22px;   /* plus compact, s’aligne mieux au texte */
+  width: auto;
   vertical-align: middle;
 }
-@media (min-width: 980px){ .brand-logo{ height: 32px; } }
+@media (min-width: 980px) {
+  .brand-logo {
+    height: 26px;  /* desktop : équilibre parfait avec la police 16px/700 */
+  }
+}
 .brand-logo--cream{ filter: brightness(0) invert(1) saturate(80%); opacity:.96; }
 
 /* Liens (inchangé) */
