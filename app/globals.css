@@ -26,26 +26,33 @@ body{
   position: absolute; inset: 0 auto auto 0;
   background: transparent; border-bottom:none;
 }
-/* --- HEADER : logo aligné à la ligne des liens, même hauteur visuelle --- */
+
+/* --- HEADER : structure et alignement --- */
 .nav{
   width:100%; max-width:1200px; margin:0 auto;
   padding: 10px 20px;               /* header un peu plus fin */
   display:flex; align-items:center; justify-content:space-between; gap:16px;
 }
 
-.brand-logo {
-  height: 22px;   /* plus compact, s’aligne mieux au texte */
+/* wrapper de la marque (pour contrôle d'alignement) */
+.nav .brand { display:inline-flex; align-items:center; gap:8px; }
+
+/* === Logo header : tailles ajustées (mobile → desktop) === */
+.brand-logo{
+  height: 32px;   /* base (mobile) : plus lisible */
   width: auto;
   vertical-align: middle;
+  display: inline-block;
 }
-@media (min-width: 980px) {
-  .brand-logo {
-    height: 26px;  /* desktop : équilibre parfait avec la police 16px/700 */
-  }
+@media (min-width: 640px){
+  .brand-logo{ height: 38px; }   /* tablette */
+}
+@media (min-width: 980px){
+  .brand-logo{ height: 48px; }   /* desktop : aligné visuellement avec les liens */
 }
 .brand-logo--cream{ filter: brightness(0) invert(1) saturate(80%); opacity:.96; }
 
-/* Liens (inchangé) */
+/* Liens (menu) */
 .nav-links{ display:flex; gap:22px; align-items:center; }
 .nav-links a{
   color: rgba(255,255,255,.92); font-weight:700; font-size:16px; line-height: 1;
@@ -72,26 +79,36 @@ section.hero{ width:100vw; max-width:100vw; margin:0; }
   content:""; position:absolute; inset:0;
   background:linear-gradient(180deg, rgba(0,0,0,.20) 0%, rgba(0,0,0,.05) 45%, rgba(0,0,0,.12) 100%);
 }
-/* --- HERO : conteneur compact + logo plus grand --- */
+
+/* --- HERO : conteneur compact + centrage précis --- */
 .hero .hero-inner{
-  position:relative; z-index:1;
-  width:min(1100px,92vw); text-align:center;
-  padding-top: 86px;                /* réduit l’espace au-dessus */
-  padding-bottom: 24px;             /* évite grand blanc dessous */
+  display: flex;
+  flex-direction: column;
+  align-items: center;      /* centre horizontalement le logo + h1 + CTA */
+  justify-content: flex-start;
+  position:relative;
+  z-index:1;
+  width:min(1100px,92vw);
+  text-align:center;
+  padding-top: 70px;        /* optionnel : rapproche un peu le bloc du haut */
+  padding-bottom: 24px;
 }
 
-.hero-logo {
-  max-height: 140px; /* mobile */
+/* === Logo hero : contrôle par max-height pour responsive === */
+.hero-logo{
+  height: auto;
+  width: auto;
+  max-width: 92%;           /* empêche l'image d'être plus large que le conteneur */
+  max-height: 140px;        /* mobile baseline */
+  margin: 0 0 14px;
+  display: block;
+  align-self: center;
 }
-@media (min-width: 640px) {
-  .hero-logo {
-    max-height: 200px; /* tablette */
-  }
+@media (min-width: 640px){
+  .hero-logo{ max-height: 200px; }
 }
-@media (min-width: 980px) {
-  .hero-logo {
-    max-height: 260px; /* desktop : au niveau de la hauteur du h1 */
-  }
+@media (min-width: 980px){
+  .hero-logo{ max-height: 260px; }
 }
 .hero-logo--cream{ filter: brightness(0) invert(1) saturate(80%); }
 
@@ -141,53 +158,3 @@ section.hero{ width:100vw; max-width:100vw; margin:0; }
   text-align:center; color: var(--muted); font-size:14px;
   padding: 26px; border-top:1px solid #eee; margin-top:24px;
 }
-/* ===== ajustements centrage Hero & taille logos ===== */
-
-/* Force un centrage fiable des éléments du hero */
-.hero .hero-inner{
-  /* garde width + text-align pour compatibilité, mais on ajoute flex pour alignement parfait */
-  display: flex;
-  flex-direction: column;
-  align-items: center;      /* centre horizontalement le logo + h1 + CTA */
-  justify-content: flex-start;
-  position: relative;
-  z-index: 1;
-  width: min(1100px, 92vw);
-  text-align: center;
-  padding-top: 70px;        /* optionnel : rapproche un peu le bloc du haut */
-  padding-bottom: 24px;
-}
-
-/* Contrôle strict de la largeur du logo hero pour éviter qu'il "pousse" vers la gauche */
-.hero-logo{
-  height: auto;
-  width: auto;
-  max-width: 92%;           /* empêche l'image d'être plus large que le conteneur */
-  max-height: 140px;        /* mobile baseline */
-  margin: 0 0 14px;         /* on conserve l'espacement sous le logo */
-  display: block;
-  align-self: center;       /* renforce le centrage si nécessaire */
-}
-@media (min-width: 640px){
-  .hero-logo{ max-height: 200px; }
-}
-@media (min-width: 980px){
-  .hero-logo{ max-height: 260px; }
-}
-
-/* Agrandir le logo du header pour l'aligner visuellement avec les liens */
-.brand-logo{
-  height: 28px;   /* desktop-like default */
-  width: auto;
-  vertical-align: middle;
-  display: inline-block;
-}
-@media (min-width: 640px){
-  .brand-logo{ height: 30px; }   /* petit écrans/tablette */
-}
-@media (min-width: 980px){
-  .brand-logo{ height: 36px; }   /* desktop : plus visible et proche de la taille des liens */
-}
-
-/* Si l'image du header a trop d'espace blanc, réduire son padding dans le lien */
-.nav .brand { display:inline-flex; align-items:center; gap:8px; }
