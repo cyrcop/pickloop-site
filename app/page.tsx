@@ -1,14 +1,16 @@
-import Header from '@/components/Header';
-import Hero from '@/components/Hero';
+// app/page.tsx
+import Hero from "@/components/Hero";
+import Promises from "@/components/Promises";
+import Steps from "@/components/Steps";
+import Footer from "@/components/Footer";
 
 export default function Page() {
   return (
-    <>
-      <Header />
-      <main>
-        <Hero />
-        {/* autres sections */}
-      </main>
-    </>
+    <main>
+      <Hero />
+      <Promises />
+      <Steps />
+      <Footer />
+    </main>
   );
 }
