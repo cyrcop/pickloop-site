@@ -141,3 +141,53 @@ section.hero{ width:100vw; max-width:100vw; margin:0; }
   text-align:center; color: var(--muted); font-size:14px;
   padding: 26px; border-top:1px solid #eee; margin-top:24px;
 }
+/* ===== ajustements centrage Hero & taille logos ===== */
+
+/* Force un centrage fiable des éléments du hero */
+.hero .hero-inner{
+  /* garde width + text-align pour compatibilité, mais on ajoute flex pour alignement parfait */
+  display: flex;
+  flex-direction: column;
+  align-items: center;      /* centre horizontalement le logo + h1 + CTA */
+  justify-content: flex-start;
+  position: relative;
+  z-index: 1;
+  width: min(1100px, 92vw);
+  text-align: center;
+  padding-top: 70px;        /* optionnel : rapproche un peu le bloc du haut */
+  padding-bottom: 24px;
+}
+
+/* Contrôle strict de la largeur du logo hero pour éviter qu'il "pousse" vers la gauche */
+.hero-logo{
+  height: auto;
+  width: auto;
+  max-width: 92%;           /* empêche l'image d'être plus large que le conteneur */
+  max-height: 140px;        /* mobile baseline */
+  margin: 0 0 14px;         /* on conserve l'espacement sous le logo */
+  display: block;
+  align-self: center;       /* renforce le centrage si nécessaire */
+}
+@media (min-width: 640px){
+  .hero-logo{ max-height: 200px; }
+}
+@media (min-width: 980px){
+  .hero-logo{ max-height: 260px; }
+}
+
+/* Agrandir le logo du header pour l'aligner visuellement avec les liens */
+.brand-logo{
+  height: 28px;   /* desktop-like default */
+  width: auto;
+  vertical-align: middle;
+  display: inline-block;
+}
+@media (min-width: 640px){
+  .brand-logo{ height: 30px; }   /* petit écrans/tablette */
+}
+@media (min-width: 980px){
+  .brand-logo{ height: 36px; }   /* desktop : plus visible et proche de la taille des liens */
+}
+
+/* Si l'image du header a trop d'espace blanc, réduire son padding dans le lien */
+.nav .brand { display:inline-flex; align-items:center; gap:8px; }
