@@ -21,3 +21,22 @@ export default function Header() {
     </header>
   );
 }
+import { useEffect } from "react";
+
+export default function Header(){ 
+  useEffect(() => {
+    const el = document.querySelector('.header');
+    if(!el) return;
+    const onScroll = () => {
+      if(window.scrollY > 20) el.classList.add('scrolled');
+      else el.classList.remove('scrolled');
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  return (
+    /* ton header existant */
+  );
+}
