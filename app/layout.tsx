@@ -6,7 +6,7 @@ import Header from "@/components/Header";
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://pickloop.fr";
 const title = "Pickloop – Louez. Utilisez. Répétez.";
 const description =
-  "Des casiers 24/7 pour emprunter du matériel sport & loisir, au bon endroit, au bon moment — service clé en main pour les communes et les usagers.";
+  "Des casiers 24/7 pour emprunter du matériel sport, loisir, bricolage, au bon endroit, au bon moment — service clé en main pour les communes et les usagers.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
