@@ -173,3 +173,18 @@ section.hero{ width:100vw; max-width:100vw; margin:0; }
 /* préparation : permet transform sur l'image */
 .hero .hero-inner { will-change: transform; }
 .hero-logo { transition: transform .12s linear; transform-origin: center center; }
+a, .btn{
+  transition: transform .18s cubic-bezier(.2,.9,.2,1), box-shadow .18s ease;
+}
+a:hover, .btn:hover{ transform: translateY(-3px) scale(1.01); }
+.nav-links a {
+  position: relative;
+}
+.nav-links a::after{
+  content: "";
+  position: absolute;
+  left:0; right:0; bottom:-6px;
+  height:2px; background: #fff; transform-origin: left; transform: scaleX(0);
+  transition: transform .22s ease;
+}
+.nav-links a:hover::after{ transform: scaleX(1); }
