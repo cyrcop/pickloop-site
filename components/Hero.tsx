@@ -2,6 +2,10 @@
 export default function Hero() {
   return (
     <section className="hero">
+      <section class="hero">
+  <canvas id="hero-canvas" aria-hidden="true"></canvas>
+  <div class="hero-inner"> ... </div>
+</section>
       <div className="hero-inner">
         {/* Mot-symbole au-dessus du titre (blanc/crème) */}
         <img
