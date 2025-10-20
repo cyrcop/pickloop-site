@@ -22,8 +22,8 @@ export default function Header() {
           <img
             src={
               scrolled
-                ? "/logo-wordmark.png"          // logo vert normal
-                : "/logo-wordmark-creme.png"    // logo crème (Hero sombre)
+                ? "/logo-wordmark.png?v=2"          // logo vert normal
+                : "/logo-wordmark-creme.png?v=2"    // logo crème (Hero sombre)
             }
             alt="Pickloop"
             className="brand-logo transition-all duration-300"
