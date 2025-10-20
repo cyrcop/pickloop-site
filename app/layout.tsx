@@ -50,6 +50,11 @@ export const viewport: Viewport = {
   colorScheme: "light",
 };
 
+/**
+ * Root layout
+ * - Applique la police Poppins (via next/font)
+ * - Laisse le fond et la couleur de texte gérés par les variables CSS du thème (globals.css)
+ */
 export default function RootLayout({
   children,
 }: {
@@ -57,10 +62,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fr">
-      <body className={`${poppins.className} bg-[var(--fond)] text-[var(--ink)]`}>
-        {/* Header gère l’affichage du logo (blanc/crème) via les PNG :
-            - /logo-wordmark-blanc.png
-            - /logo-wordmark-creme.png */}
+      <body className={poppins.className}>
         <Header />
         {children}
       </body>
