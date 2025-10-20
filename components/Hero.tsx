@@ -1,27 +1,52 @@
-// components/Hero.tsx
 export default function Hero() {
   return (
-    <section className="hero">
-      <div className="hero-inner">
-        {/* Mot-symbole au-dessus du titre (blanc/crème) */}
+    <section
+      className="hero relative text-white"
+      id="hero"
+      style={{
+        background:
+          "linear-gradient(180deg, #1A2C25 0%, var(--vert-deep) 28%, #2F6A52 56%, var(--accent) 100%)",
+      }}
+    >
+      <div className="hero-inner z-10 relative">
+        {/* Logo mot-symbole blanc/crème */}
         <img
           src="/logo-wordmark.png"
           alt="Pickloop"
           className="hero-logo hero-logo--cream"
         />
 
-        <h1>Louez. Utilisez. Répétez.</h1>
+        {/* Titre principal */}
+        <h1 className="font-extrabold tracking-tight text-[clamp(42px,8vw,96px)] leading-[1.05]">
+          Louez. Utilisez. Répétez.
+        </h1>
 
-        <p className="subtitle">
-          Des casiers 24/7 pour emprunter du matériel sport &amp; loisir, au plus près des usagers.
-          Service clé en main pour la commune : installation, maintenance, traçabilité et reporting d’usage.
+        {/* Sous-titre */}
+        <p className="subtitle max-w-[880px] mx-auto text-[clamp(16px,2.1vw,22px)] opacity-95 leading-relaxed">
+          Des casiers 24/7 pour emprunter du matériel <strong>sport &amp; loisir</strong>, au plus
+          près des usagers. Service clé en main pour les communes : installation, maintenance,
+          traçabilité et reporting d’usage.
         </p>
 
-        <div className="cta">
-          <a className="btn" href="#contact">Demander la présentation</a>
-          <a className="btn secondary" href="#fonctionnement">Comment ça marche</a>
+        {/* Appels à l’action */}
+        <div className="cta mt-[clamp(16px,3vw,34px)] flex justify-center flex-wrap gap-4">
+          <a
+            href="#contact"
+            className="btn bg-white text-[var(--vert)] border border-white/40 hover:bg-[var(--accent)] hover:text-[#111] hover:border-[var(--accent)] transition-all"
+          >
+            Demander la présentation
+          </a>
+          <a
+            href="#fonctionnement"
+            className="btn secondary bg-transparent border border-white/60 text-white hover:bg-white/10 hover:border-white transition-all"
+          >
+            Comment ça marche
+          </a>
         </div>
       </div>
+
+      {/* Dégradé d’ombre doux en superposition (facilite lecture du texte) */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/5 to-black/20 pointer-events-none" />
     </section>
   );
 }
