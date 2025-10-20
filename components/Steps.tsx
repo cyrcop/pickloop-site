@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { QrCode, PackageOpen, CheckCircle2 } from "lucide-react";
 
 const STEPS = [
@@ -41,9 +42,16 @@ export default function Steps() {
       <div className="steps-grid">
         {STEPS.map(({ n, title, text, image, Icon }, i) => (
           <article key={n} className="step-card">
-            {/* Image (wrapper carré 300x300) */}
+            {/* Image */}
             <div className="img-wrap">
-              <img src={image} alt={title} className="img" loading={n === 1 ? "eager" : "lazy"} />
+              <Image
+                src={image}
+                alt={title}
+                fill
+                sizes="(max-width: 768px) 100vw, 33vw"
+                style={{ objectFit: "cover" }}
+                priority={n === 1}
+              />
               <div className="img-overlay" />
             </div>
 
@@ -58,7 +66,7 @@ export default function Steps() {
 
             {/* Connecteur fléché entre cartes (desktop uniquement) */}
             {i < STEPS.length - 1 && (
-              <svg className="connector" viewBox="0 0 100 6" preserveAspectRatio="none" aria-hidden="true">
+              <svg className="connector" viewBox="0 0 100 6" preserveAspectRatio="none">
                 <line x1="0" y1="3" x2="92" y2="3" stroke="#8ED9A1" strokeWidth="3" strokeDasharray="6 6" strokeLinecap="round" />
                 <polygon points="92,0 100,3 92,6" fill="#8ED9A1" />
               </svg>
@@ -113,25 +121,22 @@ export default function Steps() {
           text-align: center;
         }
 
-        /* Image wrapper – 300x300 + contain (zéro rognage) */
+        /* Image wrapper FIABLE */
         .img-wrap{
           position: relative;
           width: 100%;
-          max-width: 300px;
-          height: 300px;
+          max-width: 360px;
+          height: 225px; /* ≈ 16:10 */
           margin: 0 auto;
           overflow: hidden;
-          border: 3px solid #fff;
+          border: 1px solid var(--border);
           border-radius: 16px;
           background: #fff;
-          box-shadow: 0 8px 32px rgba(0,0,0,.06);
-          display:flex; align-items:center; justify-content:center;
+          box-shadow: 0 6px 24px rgba(0,0,0,.08);
         }
-        .img{ width:100%; height:100%; object-fit:contain; object-position:center; display:block; }
         .img-overlay{
           position: absolute; inset: 0;
-          background: linear-gradient(to top, rgba(0,0,0,.28), rgba(0,0,0,.08) 50%, rgba(0,0,0,0));
-          pointer-events:none;
+          background: linear-gradient(to top, rgba(0,0,0,.35), rgba(0,0,0,.1) 50%, rgba(0,0,0,0));
         }
 
         .round-icon{
