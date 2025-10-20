@@ -42,16 +42,16 @@ export default function Steps() {
       <div className="steps-grid">
         {STEPS.map(({ n, title, text, image, Icon }, i) => (
           <article key={n} className="step-card">
-            {/* Image */}
+            {/* Image (wrapper carré 300x300, object-fit: contain via CSS global) */}
             <div className="img-wrap">
               <Image
                 src={image}
                 alt={title}
                 fill
                 sizes="(max-width: 768px) 100vw, 33vw"
-                style={{ objectFit: "cover" }}
                 priority={n === 1}
               />
+              {/* Overlay léger (peut être commenté si besoin) */}
               <div className="img-overlay" />
             </div>
 
@@ -121,22 +121,24 @@ export default function Steps() {
           text-align: center;
         }
 
-        /* Image wrapper FIABLE */
+        /* Image wrapper – aligné au globals.css (300x300 + contain) */
         .img-wrap{
           position: relative;
           width: 100%;
-          max-width: 360px;
-          height: 225px; /* ≈ 16:10 */
+          max-width: 300px;
+          height: 300px;
           margin: 0 auto;
           overflow: hidden;
-          border: 1px solid var(--border);
+          border: 3px solid #fff;
           border-radius: 16px;
           background: #fff;
-          box-shadow: 0 6px 24px rgba(0,0,0,.08);
+          box-shadow: 0 8px 32px rgba(0,0,0,.06);
+          display:flex; align-items:center; justify-content:center;
         }
         .img-overlay{
           position: absolute; inset: 0;
-          background: linear-gradient(to top, rgba(0,0,0,.35), rgba(0,0,0,.1) 50%, rgba(0,0,0,0));
+          background: linear-gradient(to top, rgba(0,0,0,.28), rgba(0,0,0,.08) 50%, rgba(0,0,0,0));
+          pointer-events:none;
         }
 
         .round-icon{
