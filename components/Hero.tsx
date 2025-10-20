@@ -11,7 +11,7 @@ export default function Hero() {
       <div className="hero-inner z-10 relative">
         {/* Logo crème (fond transparent) */}
         <img
-          src="/logo-wordmark-creme.png"   // <- crème #FAF8F4
+          src="/logo-wordmark-creme.png?v=2"   // <- cache-bust (crème #FAF8F4)
           alt="Pickloop"
           className="hero-logo"
           loading="eager"
