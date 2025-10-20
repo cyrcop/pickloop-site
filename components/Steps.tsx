@@ -1,9 +1,18 @@
 "use client";
 
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { QrCode, PackageOpen, CheckCircle2 } from "lucide-react";
 
-const STEPS = [
+type Step = {
+  n: number;
+  title: string;
+  text: string;
+  image: string; // /public/steps/*.png
+  Icon: any;
+};
+
+const STEPS: Step[] = [
   {
     n: 1,
     title: "Réservez & scannez",
@@ -30,15 +39,29 @@ const STEPS = [
   },
 ];
 
+// Variants pour l'animation en cascade
+const container = {
+  hidden: { opacity: 0, y: 12 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { staggerChildren: 0.12, when: "beforeChildren" },
+  },
+};
+const item = {
+  hidden: { opacity: 0, y: 18 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.36, ease: "easeOut" } },
+};
+
 export default function Steps() {
   return (
     <section
       id="fonctionnement"
       aria-label="Fonctionnement"
-      className="relative py-28 bg-[var(--fond)] text-[var(--ink)]"
+      className="relative py-24 bg-[var(--fond)] text-[var(--ink)]"
     >
       <div className="w-[min(1200px,92vw)] mx-auto px-6">
-        {/* ====== Titre ====== */}
+        {/* Titre */}
         <header className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-[var(--vert)]">
             Comment ça marche
@@ -46,52 +69,57 @@ export default function Steps() {
           <div className="mx-auto mt-4 h-1 w-16 rounded bg-[var(--accent)]/70" />
         </header>
 
-        {/* ====== Ligne horizontale ====== */}
-        <div className="relative flex flex-col md:flex-row items-center justify-between gap-14 md:gap-4">
-          {/* Ligne connectrice (desktop) */}
-          <div className="hidden md:block absolute top-12 left-0 right-0 h-[3px] bg-[var(--accent)]/40" />
+        {/* Timeline */}
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-120px" }}
+          className="relative flex flex-col md:flex-row items-stretch md:items-start justify-between gap-14 md:gap-6"
+        >
+          {/* Ligne + flèches (desktop) */}
+          <div className="hidden md:block absolute top-[92px] left-0 right-0 h-[3px] bg-[var(--accent)]/35" />
+          {/* petites flèches au milieu de chaque segment */}
+          <div className="hidden md:flex absolute top-[80px] left-1/3 -translate-x-1/2 text-[var(--accent)]">➜</div>
+          <div className="hidden md:flex absolute top-[80px] left-2/3 -translate-x-1/2 text-[var(--accent)]">➜</div>
 
-          {STEPS.map(({ n, title, text, image, Icon }, i) => (
-            <div
+          {STEPS.map(({ n, title, text, image, Icon }) => (
+            <motion.div
               key={n}
-              className="relative flex flex-col items-center text-center w-full md:w-1/3"
+              variants={item}
+              className="relative flex-1 flex flex-col items-center text-center"
             >
-              {/* Image en haut */}
-              <div className="relative w-full max-w-[300px] aspect-[4/3] overflow-hidden rounded-2xl border border-[var(--border)] bg-white shadow-sm hover:shadow-xl transition-all duration-300">
+              {/* Image (taille fixe pour un rendu clean) */}
+              <div className="relative w-full max-w-[340px] aspect-[16/10] overflow-hidden rounded-2xl border border-[var(--border)] bg-white shadow-sm hover:shadow-xl transition-all duration-300">
                 <Image
                   src={image}
                   alt={title}
                   fill
                   sizes="(max-width: 768px) 100vw, 33vw"
                   className="object-cover"
+                  priority={n === 1}
                 />
-                {/* overlay pour la lisibilité */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-black/10 to-transparent" />
               </div>
 
-              {/* Icône ronde superposée */}
-              <div className="relative -mt-10 z-10 flex items-center justify-center w-20 h-20 rounded-full bg-[var(--accent)] text-[var(--vert)] shadow-lg ring-4 ring-white">
-                <Icon size={38} strokeWidth={2.2} />
+              {/* Icône ronde sous l'image */}
+              <div className="relative -mt-9 z-10 flex items-center justify-center w-20 h-20 rounded-full bg-[var(--accent)] text-[var(--vert)] shadow-lg ring-4 ring-white">
+                <Icon size={40} strokeWidth={2.2} />
               </div>
 
-              {/* Numéro + texte */}
-              <span className="mt-2 mb-1 inline-block text-sm font-bold text-[var(--vert)] opacity-80">
+              {/* Méta + texte */}
+              <span className="mt-2 text-xs font-bold tracking-wide text-[var(--vert)]/80 uppercase">
                 Étape {n}
               </span>
-              <h3 className="text-xl font-semibold text-[var(--vert)]">
+              <h3 className="mt-1 text-xl font-semibold text-[var(--vert)]">
                 {title}
               </h3>
-              <p className="mt-2 text-[var(--muted)] leading-relaxed max-w-[280px]">
+              <p className="mt-2 text-[var(--muted)] leading-relaxed max-w-[320px]">
                 {text}
               </p>
-
-              {/* Flèche décorative entre étapes (desktop) */}
-              {i < STEPS.length - 1 && (
-                <div className="hidden md:block absolute top-[54px] right-[-10%] w-[20%] border-t-[3px] border-dashed border-[var(--accent)]" />
-              )}
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
