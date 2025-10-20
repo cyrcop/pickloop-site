@@ -7,7 +7,7 @@ type Step = {
   n: number;
   title: string;
   text: string;
-  image: string; // chemin vers /public/steps/*.png
+  image: string; // /public/steps/*.png
   Icon: any;
 };
 
@@ -59,17 +59,17 @@ export default function Steps() {
               key={n}
               className="group overflow-hidden rounded-2xl border border-[var(--border)] bg-white shadow-sm hover:shadow-xl transition-all duration-300"
             >
-              {/* VISUEL LARGE */}
-              <div className="relative h-64">
+              {/* VISUEL LARGE — ratio fixé pour éviter tout chevauchement */}
+              <div className="relative w-full" style={{ aspectRatio: "3 / 2" }}>
                 <Image
                   src={image}
                   alt={title}
                   fill
-                  priority={n === 1}
                   sizes="(max-width: 768px) 100vw, 33vw"
                   className="object-cover"
+                  priority={n === 1}
                 />
-                {/* Overlay lisibilité */}
+                {/* Overlay de lisibilité */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-black/10 to-transparent" />
 
                 {/* Badge numéro */}
@@ -77,7 +77,7 @@ export default function Steps() {
                   {n}
                 </span>
 
-                {/* Icône XXL ancrée dans l'image */}
+                {/* Icône XXL */}
                 <div className="absolute -bottom-6 left-6 inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-[var(--accent)]/90 text-[var(--vert)] shadow-lg ring-4 ring-white">
                   <Icon size={30} strokeWidth={2.2} />
                 </div>
@@ -88,7 +88,7 @@ export default function Steps() {
                 <h3 className="text-xl font-semibold text-[var(--vert)]">{title}</h3>
                 <p className="mt-2 text-[var(--muted)] leading-relaxed">{text}</p>
 
-                {/* Ruban d’accent au survol */}
+                {/* Liseré d’accent */}
                 <div className="mt-6 h-[3px] w-0 bg-[var(--accent)] transition-all duration-300 group-hover:w-24" />
               </div>
             </article>
