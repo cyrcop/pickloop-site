@@ -7,33 +7,30 @@ export default function Header() {
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
-    onScroll(); // état correct si on arrive ancré
+    onScroll(); // état correct si on arrive déjà scrollé
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
     <header
-      className={
-        scrolled
-          ? "header scrolled"
-          : "header header--over-hero"
-      }
+      className={scrolled ? "header scrolled" : "header header--over-hero"}
     >
       <nav className="nav" aria-label="Navigation principale">
+        {/* ===== LOGO ===== */}
         <a href="/" className="brand" aria-label="Accueil Pickloop">
-          {/* Logo mot-symbole sans slogan */}
           <img
-            src="/logo-wordmark.png"
-            alt="Pickloop"
-            className={
+            src={
               scrolled
-                ? "brand-logo"              // logo normal (sur fond clair)
-                : "brand-logo brand-logo--cream" // logo crème (sur hero sombre)
+                ? "/logo-wordmark.png"          // logo vert normal
+                : "/logo-wordmark-creme.png"    // logo crème (Hero sombre)
             }
+            alt="Pickloop"
+            className="brand-logo transition-all duration-300"
           />
         </a>
 
+        {/* ===== LIENS ===== */}
         <div className="nav-links">
           <a
             href="#promesses"
