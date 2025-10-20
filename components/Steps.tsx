@@ -75,6 +75,7 @@ export default function Steps() {
         ))}
       </div>
 
+      {/* ------- styles locaux (sans Tailwind) ------- */}
       <style jsx>{`
         /* Section */
         .steps-wrap{
@@ -98,7 +99,7 @@ export default function Steps() {
           background: rgba(142,217,161,.7); /* --accent */
         }
 
-        /* Grille PURE CSS (fiable sans Tailwind) */
+        /* Grille PURE CSS */
         .steps-grid{
           display: grid;
           grid-template-columns: 1fr;
@@ -173,23 +174,18 @@ export default function Steps() {
         }
 
         /* Connecteur fléché (desktop) */
-        .connector{
-          display: none;
-        }
+        .connector{ display:none; }
         @media (min-width: 768px){
           .connector{
-            display: block;
-            position: absolute;
-            top: 112px;           /* aligné verticalement au centre de l'image */
-            right: -12%;
-            width: 24%;
-            height: 24px;
+            display:block;
+            position:absolute;
+            top: 112px;      /* aligné verticalement au centre de l'image */
+            right:-12%;
+            width:24%;
+            height:24px;
           }
         }
       `}</style>
-    </section>
-  );
-}
     </section>
   );
 }
