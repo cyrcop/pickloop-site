@@ -9,14 +9,11 @@ export default function Hero() {
       }}
     >
       <div className="hero-inner z-10 relative">
-        {/* Logo crème (fond transparent) */}
+        {/* Logo mot-symbole blanc/crème */}
         <img
-          src="/logo-wordmark-creme.png?v=2"   // <- cache-bust (crème #FAF8F4)
+          src="/logo-wordmark.png"
           alt="Pickloop"
-          className="hero-logo"
-          loading="eager"
-          decoding="async"
-          fetchPriority="high"
+          className="hero-logo hero-logo--cream"
         />
 
         {/* Titre principal */}
