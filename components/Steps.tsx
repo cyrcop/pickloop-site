@@ -7,7 +7,7 @@ type Step = {
   n: number;
   title: string;
   text: string;
-  image: string; // /public/steps/*.jpg
+  image: string; // chemin vers /public/steps/*.png
   Icon: any;
 };
 
@@ -17,7 +17,7 @@ const STEPS: Step[] = [
     title: "Réservez & scannez",
     text:
       "Repérez le casier sur l’appli ou via QR ; identification sur la console centrale.",
-    image: "/steps/scan.jpg",
+    image: "/steps/scan.png",
     Icon: QrCode,
   },
   {
@@ -25,7 +25,7 @@ const STEPS: Step[] = [
     title: "Prenez l’objet",
     text:
       "Ouverture du casier attribué. Photo/vidéo obligatoire à la prise.",
-    image: "/steps/take.jpg",
+    image: "/steps/take.png",
     Icon: PackageOpen,
   },
   {
@@ -33,7 +33,7 @@ const STEPS: Step[] = [
     title: "Rendez-le",
     text:
       "Déposez l’objet, photo/vidéo retour, reçu & évaluation – maintenance assurée par Pickloop.",
-    image: "/steps/return.jpg",
+    image: "/steps/return.png",
     Icon: CheckCircle2,
   },
 ];
@@ -45,9 +45,6 @@ export default function Steps() {
       aria-label="Fonctionnement"
       className="relative py-24 bg-[var(--fond)] text-[var(--ink)]"
     >
-      {/* Décor optionnel : onde verte issue du pitch (page 4) */}
-      {/* <div className="pointer-events-none absolute inset-x-0 -top-10 h-24 bg-[url('/steps/onde.png')] bg-no-repeat bg-top bg-cover opacity-60" /> */}
-
       <div className="w-[min(1200px,92vw)] mx-auto px-4">
         <header className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-[var(--vert)]">
@@ -68,17 +65,19 @@ export default function Steps() {
                   src={image}
                   alt={title}
                   fill
-                  priority
+                  priority={n === 1}
                   sizes="(max-width: 768px) 100vw, 33vw"
                   className="object-cover"
                 />
-                {/* overlay pour lisibilité */}
+                {/* Overlay lisibilité */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-black/10 to-transparent" />
 
-                {/* Badge + icône XXL */}
+                {/* Badge numéro */}
                 <span className="absolute top-4 left-4 inline-flex items-center justify-center w-11 h-11 rounded-full bg-[var(--vert)] text-white font-extrabold shadow-md">
                   {n}
                 </span>
+
+                {/* Icône XXL ancrée dans l'image */}
                 <div className="absolute -bottom-6 left-6 inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-[var(--accent)]/90 text-[var(--vert)] shadow-lg ring-4 ring-white">
                   <Icon size={30} strokeWidth={2.2} />
                 </div>
