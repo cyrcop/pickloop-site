@@ -33,11 +33,7 @@ const STEPS = [
 
 const container = {
   hidden: { opacity: 0, y: 12 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { staggerChildren: 0.12, when: "beforeChildren" },
-  },
+  show: { opacity: 1, y: 0, transition: { staggerChildren: 0.12, when: "beforeChildren" } },
 };
 const item = {
   hidden: { opacity: 0, y: 18 },
@@ -52,7 +48,6 @@ export default function Steps() {
       className="relative py-28 bg-[var(--fond)] text-[var(--ink)]"
     >
       <div className="w-[min(1200px,92vw)] mx-auto px-6">
-        {/* Titre */}
         <header className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-[var(--vert)]">
             Comment ça marche
@@ -60,7 +55,6 @@ export default function Steps() {
           <div className="mx-auto mt-4 h-1 w-16 rounded bg-[var(--accent)]/70" />
         </header>
 
-        {/* Timeline */}
         <motion.div
           variants={container}
           initial="hidden"
@@ -68,26 +62,46 @@ export default function Steps() {
           viewport={{ once: true, margin: "-120px" }}
           className="relative flex flex-col md:flex-row items-stretch md:items-start justify-between gap-14 md:gap-6"
         >
-          {/* Ligne connectrice (desktop) */}
-          <div className="hidden md:block absolute top-[92px] left-0 right-0 h-[3px]" style={{ backgroundColor: "rgba(142,217,161,0.35)" }} />
+          {/* Ligne connectrice */}
+          <div
+            className="hidden md:block absolute left-0 right-0"
+            style={{ top: 92, height: 3, backgroundColor: "rgba(142,217,161,0.35)" }}
+          />
 
           {STEPS.map(({ n, title, text, image, Icon }, i) => (
-            <motion.div
-              key={n}
-              variants={item}
-              className="relative flex-1 flex flex-col items-center text-center"
-            >
-              {/* Image */}
-              <div className="relative w-full max-w-[340px] aspect-[16/10] overflow-hidden rounded-2xl border border-[var(--border)] bg-white shadow-sm hover:shadow-xl transition-all duration-300">
+            <motion.div key={n} variants={item} className="relative flex-1 flex flex-col items-center text-center">
+              {/* --------- Image wrapper 100% FIABLE --------- */}
+              <div
+                style={{
+                  position: "relative",
+                  width: "100%",
+                  maxWidth: 340,
+                  // Fallback pour navigateurs sans aspect-ratio :
+                  // on fixe une hauteur et on garde object-cover
+                  height: 212, // ~ ratio 16/10 (340 * 0.625)
+                  border: `1px solid var(--border)`,
+                  borderRadius: 16,
+                  overflow: "hidden",
+                  background: "#fff",
+                  boxShadow: "0 6px 24px rgba(0,0,0,.08)",
+                }}
+              >
                 <Image
                   src={image}
                   alt={title}
                   fill
                   sizes="(max-width: 768px) 100vw, 33vw"
-                  className="object-cover"
+                  style={{ objectFit: "cover" }}
                   priority={n === 1}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-black/10 to-transparent" />
+                <div
+                  style={{
+                    position: "absolute",
+                    inset: 0,
+                    background:
+                      "linear-gradient(to top, rgba(0,0,0,.35), rgba(0,0,0,.1) 50%, rgba(0,0,0,0))",
+                  }}
+                />
               </div>
 
               {/* Icône ronde sous l’image */}
@@ -101,23 +115,15 @@ export default function Steps() {
               <h3 className="mt-1 text-xl font-semibold text-[var(--vert)]">{title}</h3>
               <p className="mt-2 text-[var(--muted)] leading-relaxed max-w-[320px]">{text}</p>
 
-              {/* Connecteur SVG (vert clair + flèche fine) */}
+              {/* Connecteur (flèche) */}
               {i < STEPS.length - 1 && (
                 <svg
-                  className="hidden md:block absolute top-[86px] right-[-12%] w-[22%] h-6"
+                  className="hidden md:block absolute"
+                  style={{ top: 86, right: "-12%", width: "22%", height: 24 }}
                   viewBox="0 0 100 6"
                   preserveAspectRatio="none"
                 >
-                  <line
-                    x1="0"
-                    y1="3"
-                    x2="92"
-                    y2="3"
-                    stroke="#8ED9A1"
-                    strokeWidth="3"
-                    strokeDasharray="6 6"
-                    strokeLinecap="round"
-                  />
+                  <line x1="0" y1="3" x2="92" y2="3" stroke="#8ED9A1" strokeWidth="3" strokeDasharray="6 6" strokeLinecap="round" />
                   <polygon points="92,0 100,3 92,6" fill="#8ED9A1" />
                 </svg>
               )}
