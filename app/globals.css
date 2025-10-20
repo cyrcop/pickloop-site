@@ -178,6 +178,41 @@ section.hero{ width:100vw; max-width:100vw; margin:0; }
 @media (min-width:640px){ .promises .card{ grid-column:span 6; } }
 @media (min-width:980px){ .promises .card{ grid-column:span 3; } }
 
+/* ====== STEPS – AJUSTEMENTS GLOBAUX ======
+   (ces règles complètent le style local dans Steps.tsx) */
+.steps-wrap{ padding:96px 24px; background:var(--fond); color:var(--ink); width:min(1200px,92vw); margin:0 auto; }
+.steps-header{ text-align:center; margin-bottom:64px; }
+.steps-header h2{ margin:0; font-weight:800; font-size:clamp(28px,3.2vw,40px); letter-spacing:-.02em; color:var(--vert); }
+.steps-header .bar{ width:64px; height:4px; border-radius:6px; margin:14px auto 0; background:rgba(142,217,161,.7); }
+/* grille 1→3 colonnes */
+.steps-grid{ display:grid; grid-template-columns:1fr; gap:48px; position:relative; }
+@media (min-width:768px){ .steps-grid{ grid-template-columns:repeat(3,1fr); gap:48px; } }
+/* cartes */
+.step-card{ position:relative; display:flex; flex-direction:column; align-items:center; text-align:center; }
+/* images : taille réduite (moins de troncature) */
+.step-card .img-wrap{
+  position:relative; width:100%; max-width:360px;
+  height:180px; /* <- AVANT: 225px */
+  margin:0 auto; overflow:hidden; border:3px solid #fff;
+  border-radius:16px; background:#fff;
+  box-shadow:0 8px 32px rgba(0,0,0,.06);
+}
+.step-card .img-overlay{ position:absolute; inset:0;
+  background:linear-gradient(to top, rgba(0,0,0,.28), rgba(0,0,0,.08) 50%, rgba(0,0,0,0)); }
+.step-card .round-icon{
+  position:relative; margin-top:-36px; z-index:1; width:80px; height:80px; border-radius:999px;
+  background:var(--accent); color:var(--vert); display:flex; align-items:center; justify-content:center;
+  box-shadow:0 10px 24px rgba(0,0,0,.12); outline:4px solid #fff;
+}
+.step-card .kicker{ margin-top:8px; font-size:11px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color: color-mix(in srgb, var(--vert) 80%, transparent); }
+.step-card h3{ margin:6px 0 0; font-size:20px; font-weight:700; color:var(--vert); }
+.step-card p{ margin:8px auto 0; color:var(--muted); line-height:1.6; max-width:320px; }
+/* connecteur */
+.connector{ display:none; }
+@media (min-width:768px){
+  .connector{ display:block; position:absolute; top:112px; right:-12%; width:24%; height:24px; }
+}
+
 /* ====== FOOTER ====== */
 .footer{
   text-align:center; color:var(--muted);
