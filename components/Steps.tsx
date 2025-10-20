@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { QrCode, PackageOpen, CheckCircle2 } from "lucide-react";
 
 const STEPS = [
@@ -42,16 +41,9 @@ export default function Steps() {
       <div className="steps-grid">
         {STEPS.map(({ n, title, text, image, Icon }, i) => (
           <article key={n} className="step-card">
-            {/* Image (wrapper carré 300x300, object-fit: contain via CSS global) */}
+            {/* Image (wrapper carré 300x300) */}
             <div className="img-wrap">
-              <Image
-                src={image}
-                alt={title}
-                fill
-                sizes="(max-width: 768px) 100vw, 33vw"
-                priority={n === 1}
-              />
-              {/* Overlay léger (peut être commenté si besoin) */}
+              <img src={image} alt={title} className="img" loading={n === 1 ? "eager" : "lazy"} />
               <div className="img-overlay" />
             </div>
 
@@ -66,7 +58,7 @@ export default function Steps() {
 
             {/* Connecteur fléché entre cartes (desktop uniquement) */}
             {i < STEPS.length - 1 && (
-              <svg className="connector" viewBox="0 0 100 6" preserveAspectRatio="none">
+              <svg className="connector" viewBox="0 0 100 6" preserveAspectRatio="none" aria-hidden="true">
                 <line x1="0" y1="3" x2="92" y2="3" stroke="#8ED9A1" strokeWidth="3" strokeDasharray="6 6" strokeLinecap="round" />
                 <polygon points="92,0 100,3 92,6" fill="#8ED9A1" />
               </svg>
@@ -121,7 +113,7 @@ export default function Steps() {
           text-align: center;
         }
 
-        /* Image wrapper – aligné au globals.css (300x300 + contain) */
+        /* Image wrapper – 300x300 + contain (zéro rognage) */
         .img-wrap{
           position: relative;
           width: 100%;
@@ -135,6 +127,7 @@ export default function Steps() {
           box-shadow: 0 8px 32px rgba(0,0,0,.06);
           display:flex; align-items:center; justify-content:center;
         }
+        .img{ width:100%; height:100%; object-fit:contain; object-position:center; display:block; }
         .img-overlay{
           position: absolute; inset: 0;
           background: linear-gradient(to top, rgba(0,0,0,.28), rgba(0,0,0,.08) 50%, rgba(0,0,0,0));
