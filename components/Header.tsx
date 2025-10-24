@@ -13,66 +13,66 @@ export default function Header() {
   }, []);
 
   return (
-    <header
-      className={
-        scrolled
-          ? "header scrolled"
-          : "header header--over-hero"
-      }
-    >
+    <header className={scrolled ? "header scrolled" : "header header--over-hero"}>
       <nav className="nav" aria-label="Navigation principale">
         <a href="/" className="brand" aria-label="Accueil Pickloop">
           {/* Logo mot-symbole sans slogan */}
-<img
-  src={scrolled ? "/logo-wordmark.png?v=5" : "/logo-wordmark-creme.png?v=5"}
-  alt="Pickloop"
-  className="brand-logo"
-/>
+          <img
+            src={scrolled ? "/logo-wordmark.png?v=5" : "/logo-wordmark-creme.png?v=5"}
+            alt="Pickloop"
+            className="brand-logo"
+          />
         </a>
 
         <div className="nav-links">
-  <a
-    href="/about"
-    className={
-      scrolled
-        ? "text-[var(--ink)] hover:text-[var(--vert)] font-bold transition-colors"
-        : undefined
-    }
-  >
-    Qui sommes-nous
-  </a>
+          <a
+            href="/about"
+            className={
+              scrolled
+                ? "text-[var(--ink)] hover:text-[var(--vert)] font-bold transition-colors"
+                : undefined
+            }
+          >
+            Qui sommes-nous
+          </a>
 
-  <a
-    href="#promesses"
-    className={
-      scrolled
-        ? "text-[var(--ink)] hover:text-[var(--vert)] font-bold transition-colors"
-        : undefined
-    }
-  >
-    Bénéfices
-  </a>
-  <a
-    href="#fonctionnement"
-    className={
-      scrolled
-        ? "text-[var(--ink)] hover:text-[var(--vert)] font-bold transition-colors"
-        : undefined
-    }
-  >
-    Fonctionnement
-  </a>
-  <a
-    href="#contact"
-    className={
-      scrolled
-        ? "text-[var(--ink)] hover:text-[var(--vert)] font-bold transition-colors"
-        : undefined
-    }
-  >
-    Contact
-  </a>
-</div>
+          <a
+            href="#promesses"
+            className={
+              scrolled
+                ? "text-[var(--ink)] hover:text-[var(--vert)] font-bold transition-colors"
+                : undefined
+            }
+          >
+            Bénéfices
+          </a>
+
+          <a
+            href="#fonctionnement"
+            className={
+              scrolled
+                ? "text-[var(--ink)] hover:text-[var(--vert)] font-bold transition-colors"
+                : undefined
+            }
+          >
+            Fonctionnement
+          </a>
+
+          <a
+            href="#contact"
+            className={
+              scrolled
+                ? "text-[var(--ink)] hover:text-[var(--vert)] font-bold transition-colors"
+                : undefined
+            }
+          >
+            Contact
+          </a>
+        </div>
+      </nav>
+    </header>
+  );
+}
     </header>
   );
 }
