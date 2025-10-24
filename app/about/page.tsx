@@ -1,36 +1,63 @@
-// app/about/page.tsx
 export default function AboutPage() {
   return (
     <>
-      {/* HERO – sobre, cohérent avec la home (fond dégradé + texte crème) */}
+      {/* HERO VARIANT – layout gauche/droite + collage d'images */}
       <section
-        className="hero relative text-[var(--light)]"
-        aria-labelledby="about-hero-title"
+        className="relative overflow-hidden"
+        style={{
+          background: "linear-gradient(180deg, #1A2C25 0%, var(--vert-deep) 28%, #2F6A52 56%, var(--accent) 100%)",
+          color: "var(--light)",
+          padding: "80px 0",
+        }}
       >
-        <div className="hero-inner z-10 relative">
-          {/* Logo crème sur fond sombre */}
-          <img
-            src="/logo-wordmark-creme.png?v=5"
-            alt="Pickloop"
-            className="hero-logo"
-          />
+        <div
+          className="z-10 relative"
+          style={{ width: "min(1200px,92vw)", margin: "0 auto", display: "grid", gap: 24, gridTemplateColumns: "1.2fr 1fr", alignItems: "center" }}
+        >
+          {/* Texte à gauche */}
+          <div>
+            <img src="/logo-wordmark-creme.png?v=5" alt="Pickloop" style={{ height: 48, marginBottom: 18 }} />
+            <h1 className="font-extrabold tracking-tight" style={{ fontSize: "clamp(36px,6.5vw,64px)", lineHeight: 1.08 }}>
+              Une innovation française au service du quotidien
+            </h1>
+            <p className="subtitle" style={{ marginTop: 12, maxWidth: 720 }}>
+              Porté par <strong>Kevcyr SASU</strong>, Pickloop développe un réseau de casiers connectés pour faciliter l’accès à des objets utiles, 24/7, de façon simple, traçable et durable.
+            </p>
 
-          <h1 id="about-hero-title" className="font-extrabold tracking-tight text-[clamp(38px,6.5vw,72px)] leading-[1.08]">
-            Une innovation française au service du quotidien
-          </h1>
+            <div className="cta" style={{ marginTop: 22 }}>
+              <a href="/collectivites" className="btn" style={{ background: "var(--vert)", color: "#fff", borderColor: "var(--vert)" }}>
+                Voir les solutions collectivités
+              </a>
+              <a href="/faq" className="btn secondary">Consulter la FAQ</a>
+            </div>
+          </div>
 
-          <p className="subtitle max-w-[880px] mx-auto leading-relaxed">
-            Porté par <strong>Kevcyr SASU</strong>, Pickloop développe un réseau de casiers connectés
-            pour faciliter l’accès à des objets utiles, 24/7, de façon simple, traçable et durable.
-          </p>
-
-          <div className="cta mt-[clamp(16px,3vw,34px)] flex justify-center flex-wrap gap-4">
-            <a href="/contact" className="btn">Contactez-nous</a>
-            <a href="/collectivites" className="btn secondary">Solutions collectivités</a>
+          {/* Collage à droite */}
+          <div aria-hidden="true" style={{ position: "relative", height: 360 }}>
+            <div style={{
+              position: "absolute", top: 0, right: 0, width: 240, height: 160,
+              background: "#fff", borderRadius: 16, overflow: "hidden",
+              boxShadow: "0 18px 60px rgba(0,0,0,.20)"
+            }}>
+              <img src="/steps/scan.png" alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }}/>
+            </div>
+            <div style={{
+              position: "absolute", bottom: 20, left: 0, width: 260, height: 180,
+              background: "#fff", borderRadius: 16, overflow: "hidden",
+              boxShadow: "0 18px 60px rgba(0,0,0,.20)", transform: "rotate(-4deg)"
+            }}>
+              <img src="/steps/take.png" alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }}/>
+            </div>
+            <div style={{
+              position: "absolute", top: 120, left: 140, width: 220, height: 160,
+              background: "#fff", borderRadius: 16, overflow: "hidden",
+              boxShadow: "0 18px 60px rgba(0,0,0,.20)", transform: "rotate(6deg)"
+            }}>
+              <img src="/steps/return.png" alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }}/>
+            </div>
           </div>
         </div>
 
-        {/* voile léger pour la lisibilité */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/5 to-black/20 pointer-events-none" />
       </section>
 
@@ -40,107 +67,67 @@ export default function AboutPage() {
           <h2 id="about-mission-title">Notre mission</h2>
           <div className="bar" />
         </header>
-
-        <div
-          style={{ width: "min(1100px,92vw)", margin: "0 auto" }}
-          className="text-[var(--ink)]"
-        >
+        <div style={{ width: "min(1100px,92vw)", margin: "0 auto" }}>
           <p className="text-[17px] leading-7">
-            Pickloop propose une alternative concrète à l’achat systématique :{" "}
-            <strong>emprunter ce dont on a besoin, quand on en a besoin</strong>. Nos casiers
-            connectés donnent accès, en autonomie, à du matériel entretenu et traçable
-            (bricolage, jardinage, sport, mobilité, objets du quotidien).
+            Pickloop propose une alternative concrète à l’achat systématique : <strong>emprunter ce dont on a besoin, quand on en a besoin</strong>.
+            Nos casiers connectés donnent accès, en autonomie, à du matériel entretenu et traçable (bricolage, jardinage, sport, mobilité, objets du quotidien).
           </p>
           <p className="text-[17px] leading-7 mt-4">
-            L’objectif : <strong>simplifier l’usage</strong>, <strong>prolonger la durée de vie des objets</strong> et
-            <strong> réduire les contraintes</strong> pour les utilisateurs comme pour les territoires.
+            Objectif : <strong>simplifier l’usage</strong>, <strong>prolonger la durée de vie des objets</strong> et <strong>réduire les contraintes</strong> pour les utilisateurs comme pour les territoires.
           </p>
         </div>
       </section>
 
-      {/* ENTREPRISE / PILIERS KEVCYR */}
-      <section aria-labelledby="about-kevcyr-title" className="steps-wrap" id="kevcyr">
+      {/* KEVCYR – 3 piliers */}
+      <section aria-labelledby="kevcyr-title" className="steps-wrap">
         <header className="steps-header">
-          <h2 id="about-kevcyr-title">Kevcyr&nbsp;SASU</h2>
+          <h2 id="kevcyr-title">Kevcyr SASU</h2>
           <div className="bar" />
         </header>
-
         <div className="promises" style={{ marginTop: 0 }}>
-          <article className="card">
-            <h3>Innovation pragmatique</h3>
-            <p>Des solutions utiles, fiables et réplicables, pensées pour l’opérationnel.</p>
-          </article>
-          <article className="card">
-            <h3>Écologie réaliste</h3>
-            <p>Entretenir, réparer, réutiliser : prolonger la vie des objets plutôt que produire davantage.</p>
-          </article>
-          <article className="card">
-            <h3>Service de proximité</h3>
-            <p>Un modèle qui s’adapte aussi bien aux métropoles qu’aux communes les plus isolées.</p>
-          </article>
+          <article className="card"><h3>Innovation pragmatique</h3><p>Des solutions utiles, fiables et réplicables, pensées pour l’opérationnel.</p></article>
+          <article className="card"><h3>Écologie réaliste</h3><p>Entretenir, réparer, réutiliser : prolonger la vie des objets plutôt que produire davantage.</p></article>
+          <article className="card"><h3>Service de proximité</h3><p>Un modèle qui s’adapte aussi bien aux métropoles qu’aux communes les plus isolées.</p></article>
         </div>
       </section>
 
-      {/* ÉCOSYSTÈME PRODUIT – simple, factuel */}
-      <section aria-labelledby="about-ecosys-title" className="steps-wrap">
+      {/* ÉCOSYSTÈME – 3 blocs */}
+      <section aria-labelledby="eco-title" className="steps-wrap">
         <header className="steps-header">
-          <h2 id="about-ecosys-title">L’écosystème Pickloop</h2>
+          <h2 id="eco-title">L’écosystème Pickloop</h2>
           <div className="bar" />
         </header>
-
         <div className="promises" style={{ marginTop: 0 }}>
-          <article className="card">
-            <h3>Application fluide</h3>
-            <p>Réserver, scanner et ouvrir un casier en quelques secondes depuis son smartphone.</p>
-          </article>
-          <article className="card">
-            <h3>Traçabilité</h3>
-            <p>Photos/vidéos et horodatage possibles pour limiter les litiges et clarifier l’usage.</p>
-          </article>
-          <article className="card">
-            <h3>Maintenance organisée</h3>
-            <p>Contrôles réguliers, remplacement selon l’état réel, gestion centralisée du stock.</p>
-          </article>
+          <article className="card"><h3>Application fluide</h3><p>Réserver, scanner, ouvrir un casier en quelques secondes.</p></article>
+          <article className="card"><h3>Traçabilité</h3><p>Photos/vidéos & horodatage possibles pour limiter les litiges.</p></article>
+          <article className="card"><h3>Maintenance organisée</h3><p>Contrôles réguliers, remplacement selon l’état réel, gestion centralisée.</p></article>
         </div>
       </section>
 
       {/* VALEURS */}
-      <section aria-labelledby="about-values-title" className="steps-wrap">
+      <section aria-labelledby="values-title" className="steps-wrap">
         <header className="steps-header">
-          <h2 id="about-values-title">Nos valeurs</h2>
+          <h2 id="values-title">Nos valeurs</h2>
           <div className="bar" />
         </header>
-
         <div className="promises" style={{ marginTop: 0 }}>
-          <article className="card">
-            <h3>Durabilité</h3>
-            <p>Allonger la durée de vie des objets par l’entretien, la réparation et la réutilisation.</p>
-          </article>
-          <article className="card">
-            <h3>Fiabilité</h3>
-            <p>Usage sécurisé et transparent : les règles sont claires, les retours sont tracés.</p>
-          </article>
-          <article className="card">
-            <h3>Accessibilité</h3>
-            <p>Un service simple d’accès, disponible 24/7, pour répondre à des besoins réels.</p>
-          </article>
+          <article className="card"><h3>Durabilité</h3><p>Allonger la durée de vie des objets par l’entretien et la réutilisation.</p></article>
+          <article className="card"><h3>Fiabilité</h3><p>Règles claires, retours tracés, usage apaisé.</p></article>
+          <article className="card"><h3>Accessibilité</h3><p>Un service simple d’accès, disponible 24/7, pour des besoins réels.</p></article>
         </div>
       </section>
 
-      {/* CTA FINAL */}
-      <section
-        aria-labelledby="about-cta-title"
-        className="steps-wrap"
-        style={{ paddingTop: 40, paddingBottom: 100 }}
-      >
+      {/* CTA final – contrasté */}
+      <section className="steps-wrap" style={{ paddingTop: 40, paddingBottom: 100 }}>
         <header className="steps-header">
-          <h2 id="about-cta-title">Envie d’en savoir plus&nbsp;?</h2>
+          <h2>Envie d’en savoir plus ?</h2>
           <div className="bar" />
         </header>
-
         <div className="cta" style={{ marginTop: 10 }}>
-          <a href="/contact" className="btn">Parler à l’équipe</a>
-          <a href="/collectivites" className="btn secondary">Étudier une implantation</a>
+          <a href="/collectivites" className="btn" style={{ background: "var(--vert)", color: "#fff", borderColor: "var(--vert)" }}>
+            Étudier une implantation
+          </a>
+          <a href="/faq" className="btn secondary">Consulter la FAQ</a>
         </div>
       </section>
     </>
