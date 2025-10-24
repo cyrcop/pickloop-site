@@ -24,7 +24,7 @@ export default function Header() {
         <a href="/" className="brand" aria-label="Accueil Pickloop">
           {/* Logo mot-symbole sans slogan */}
 <img
-  src={scrolled ? "/logo-wordmark.svg" : "/logo-wordmark-blanc.svg"}
+  src={scrolled ? "/logo-wordmark.png?v=5" : "/logo-wordmark-creme.png?v=5"}
   alt="Pickloop"
   className="brand-logo"
 />
