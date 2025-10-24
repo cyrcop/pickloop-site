@@ -11,7 +11,7 @@ export default function Hero() {
       <div className="hero-inner z-10 relative">
         {/* Logo mot-symbole blanc/crème */}
 <img
-  src="/logo-wordmark-creme.svg"
+  src="/logo-wordmark-creme.png?v=5"
   alt="Pickloop"
   className="hero-logo"
 />
