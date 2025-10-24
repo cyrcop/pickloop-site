@@ -1,7 +1,7 @@
 export default function Hero() {
   return (
     <section
-      className="hero relative text-white"
+   className="hero relative text-[var(--light)]"
       id="hero"
       style={{
         background:
