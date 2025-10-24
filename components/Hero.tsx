@@ -10,8 +10,8 @@ export default function Hero() {
     >
       <div className="hero-inner z-10 relative">
         {/* Logo mot-symbole blanc/crème */}
-      <img
-  src="/logo-wordmark-creme.png"   // ou "/logo-wordmark-creme.png" si tu préfères crème
+<img
+  src="/logo-wordmark-creme.svg"
   alt="Pickloop"
   className="hero-logo"
 />
