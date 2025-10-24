@@ -18,7 +18,7 @@ export default function Header() {
     scrolled
       ? "font-bold transition-colors text-[var(--ink)] hover:text-[var(--vert)]"
       : "font-bold transition-colors";
-  const active = "underline underline-offset-4";
+  const active = "text-[var(--light)]"; // actif sans soulignement
 
   return (
     <header className={scrolled ? "header scrolled" : "header header--over-hero"}>
@@ -35,15 +35,9 @@ export default function Header() {
           <a href="/about" className={`${base} ${pathname === "/about" ? active : ""}`}>
             Qui sommes-nous
           </a>
-          <a href="/#promesses" className={base}>
-            Bénéfices
-          </a>
-          <a href="/#fonctionnement" className={base}>
-            Fonctionnement
-          </a>
-          <a href="/#contact" className={base}>
-            Contact
-          </a>
+          <a href="/#promesses" className={base}>Bénéfices</a>
+          <a href="/#fonctionnement" className={base}>Fonctionnement</a>
+          <a href="/#contact" className={base}>Contact</a>
         </div>
       </nav>
     </header>
