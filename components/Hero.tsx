@@ -10,11 +10,11 @@ export default function Hero() {
     >
       <div className="hero-inner z-10 relative">
         {/* Logo mot-symbole blanc/crème */}
-        <img
-          src="/logo-wordmark.png"
-          alt="Pickloop"
-          className="hero-logo hero-logo--cream"
-        />
+      <img
+  src="/logo-wordmark-creme.png"   // ou "/logo-wordmark-creme.png" si tu préfères crème
+  alt="Pickloop"
+  className="hero-logo"
+/>
 
         {/* Titre principal */}
         <h1 className="font-extrabold tracking-tight text-[clamp(42px,8vw,96px)] leading-[1.05]">
