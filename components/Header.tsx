@@ -31,38 +31,48 @@ export default function Header() {
         </a>
 
         <div className="nav-links">
-          <a
-            href="#promesses"
-            className={
-              scrolled
-                ? "text-[var(--ink)] hover:text-[var(--vert)] font-bold transition-colors"
-                : undefined
-            }
-          >
-            Bénéfices
-          </a>
-          <a
-            href="#fonctionnement"
-            className={
-              scrolled
-                ? "text-[var(--ink)] hover:text-[var(--vert)] font-bold transition-colors"
-                : undefined
-            }
-          >
-            Fonctionnement
-          </a>
-          <a
-            href="#contact"
-            className={
-              scrolled
-                ? "text-[var(--ink)] hover:text-[var(--vert)] font-bold transition-colors"
-                : undefined
-            }
-          >
-            Contact
-          </a>
-        </div>
-      </nav>
+  <a
+    href="/about"
+    className={
+      scrolled
+        ? "text-[var(--ink)] hover:text-[var(--vert)] font-bold transition-colors"
+        : undefined
+    }
+  >
+    Qui sommes-nous
+  </a>
+
+  <a
+    href="#promesses"
+    className={
+      scrolled
+        ? "text-[var(--ink)] hover:text-[var(--vert)] font-bold transition-colors"
+        : undefined
+    }
+  >
+    Bénéfices
+  </a>
+  <a
+    href="#fonctionnement"
+    className={
+      scrolled
+        ? "text-[var(--ink)] hover:text-[var(--vert)] font-bold transition-colors"
+        : undefined
+    }
+  >
+    Fonctionnement
+  </a>
+  <a
+    href="#contact"
+    className={
+      scrolled
+        ? "text-[var(--ink)] hover:text-[var(--vert)] font-bold transition-colors"
+        : undefined
+    }
+  >
+    Contact
+  </a>
+</div>
     </header>
   );
 }
