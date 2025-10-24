@@ -100,11 +100,28 @@ export default function AboutPage() {
           <h2 id="kevcyr-title">Kevcyr SASU</h2>
           <div className="bar" />
         </header>
-        <div className="promises" style={{ marginTop: 0 }}>
-          <article className="card"><h3>Innovation pragmatique</h3><p>Des solutions utiles, fiables et réplicables, pensées pour l’opérationnel.</p></article>
-          <article className="card"><h3>Écologie réaliste</h3><p>Entretenir, réparer, réutiliser : prolonger la vie des objets plutôt que produire davantage.</p></article>
-          <article className="card"><h3>Service de proximité</h3><p>Un modèle qui s’adapte aussi bien aux métropoles qu’aux communes les plus isolées.</p></article>
-        </div>
+        <div className="promises" style={{
+  marginTop: 0,
+  display: "grid",
+  gridTemplateColumns: "repeat(3, minmax(260px, 1fr))",
+  gap: 24,
+  width: "min(1100px,92vw)",
+  marginInline: "auto",
+  justifyItems: "center"
+}}>
+  <article className="card" style={{ textAlign: "center" }}>
+    <h3>Innovation pragmatique</h3>
+    <p>Des solutions utiles, fiables et réplicables, pensées pour l’opérationnel.</p>
+  </article>
+  <article className="card" style={{ textAlign: "center" }}>
+    <h3>Écologie réaliste</h3>
+    <p>Entretenir, réparer, réutiliser : prolonger la vie des objets plutôt que produire davantage.</p>
+  </article>
+  <article className="card" style={{ textAlign: "center" }}>
+    <h3>Service de proximité</h3>
+    <p>Un modèle qui s’adapte aussi bien aux métropoles qu’aux communes les plus isolées.</p>
+  </article>
+</div>
       </section>
 
       {/* ÉCOSYSTÈME – 3 blocs */}
@@ -113,11 +130,24 @@ export default function AboutPage() {
           <h2 id="eco-title">L’écosystème Pickloop</h2>
           <div className="bar" />
         </header>
-        <div className="promises" style={{ marginTop: 0 }}>
-          <article className="card"><h3>Application fluide</h3><p>Réserver, scanner, ouvrir un casier en quelques secondes.</p></article>
-          <article className="card"><h3>Traçabilité</h3><p>Photos/vidéos & horodatage possibles pour limiter les litiges.</p></article>
-          <article className="card"><h3>Maintenance organisée</h3><p>Contrôles réguliers, remplacement selon l’état réel, gestion centralisée.</p></article>
-        </div>
+        <div style={{
+  width: "min(1100px,92vw)", margin: "0 auto",
+  display: "grid", gridTemplateColumns: "repeat(3, minmax(260px, 1fr))",
+  gap: 24, justifyItems: "center"
+}}>
+  <article className="card" style={{ background: "#fff", textAlign: "center" }}>
+    <h3>Application fluide</h3>
+    <p>Réserver, scanner, ouvrir un casier en quelques secondes.</p>
+  </article>
+  <article className="card" style={{ background: "#fff", textAlign: "center" }}>
+    <h3>Traçabilité</h3>
+    <p>Photos/vidéos & horodatage possibles pour limiter les litiges.</p>
+  </article>
+  <article className="card" style={{ background: "#fff", textAlign: "center" }}>
+    <h3>Maintenance organisée</h3>
+    <p>Contrôles réguliers, remplacement selon l’état réel, gestion centralisée.</p>
+  </article>
+</div>
       </section>
 
       {/* VALEURS */}
@@ -126,11 +156,24 @@ export default function AboutPage() {
           <h2 id="values-title">Nos valeurs</h2>
           <div className="bar" />
         </header>
-        <div className="promises" style={{ marginTop: 0 }}>
-          <article className="card"><h3>Durabilité</h3><p>Allonger la durée de vie des objets par l’entretien et la réutilisation.</p></article>
-          <article className="card"><h3>Fiabilité</h3><p>Règles claires, retours tracés, usage apaisé.</p></article>
-          <article className="card"><h3>Accessibilité</h3><p>Un service simple d’accès, disponible 24/7, pour des besoins réels.</p></article>
-        </div>
+        <div style={{
+  width: "min(1100px,92vw)", margin: "0 auto",
+  display: "grid", gridTemplateColumns: "repeat(3, minmax(260px, 1fr))",
+  gap: 24, justifyItems: "center"
+}}>
+  <article className="card" style={{ textAlign: "center" }}>
+    <h3>Durabilité</h3>
+    <p>Allonger la durée de vie des objets par l’entretien et la réutilisation.</p>
+  </article>
+  <article className="card" style={{ textAlign: "center" }}>
+    <h3>Fiabilité</h3>
+    <p>Règles claires, retours tracés, usage apaisé.</p>
+  </article>
+  <article className="card" style={{ textAlign: "center" }}>
+    <h3>Accessibilité</h3>
+    <p>Un service simple d’accès, disponible 24/7, pour des besoins réels.</p>
+  </article>
+</div>
       </section>
 
       {/* CTA final – contrasté */}
@@ -141,9 +184,8 @@ export default function AboutPage() {
         </header>
         <div className="cta" style={{ marginTop: 10 }}>
           <a href="/collectivites" className="btn" style={{ background: "var(--vert)", color: "#fff", borderColor: "var(--vert)" }}>
-            Étudier une implantation
-          </a>
-          <a href="/faq" className="btn secondary">Consulter la FAQ</a>
+  Étudier une implantation
+</a>
         </div>
       </section>
     </>
