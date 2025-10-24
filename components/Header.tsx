@@ -23,15 +23,11 @@ export default function Header() {
       <nav className="nav" aria-label="Navigation principale">
         <a href="/" className="brand" aria-label="Accueil Pickloop">
           {/* Logo mot-symbole sans slogan */}
-          <img
-            src="/logo-wordmark.png"
-            alt="Pickloop"
-            className={
-              scrolled
-                ? "brand-logo"              // logo normal (sur fond clair)
-                : "brand-logo brand-logo--cream" // logo crème (sur hero sombre)
-            }
-          />
+<img
+  src={scrolled ? "/logo-wordmark.png" : "/logo-wordmark-creme.png"}
+  alt="Pickloop"
+  className="brand-logo"
+/>
         </a>
 
         <div className="nav-links">
