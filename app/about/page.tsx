@@ -1,65 +1,81 @@
 export default function AboutPage() {
   return (
     <>
-      {/* HERO VARIANT – layout gauche/droite + collage d'images */}
-      <section
-        className="relative overflow-hidden"
-        style={{
-          background: "linear-gradient(180deg, #1A2C25 0%, var(--vert-deep) 28%, #2F6A52 56%, var(--accent) 100%)",
-          color: "var(--light)",
-          padding: "80px 0",
-        }}
-      >
-        <div
-          className="z-10 relative"
-          style={{ width: "min(1200px,92vw)", margin: "0 auto", display: "grid", gap: 24, gridTemplateColumns: "1.2fr 1fr", alignItems: "center" }}
-        >
-          {/* Texte à gauche */}
-          <div>
-            <img src="/logo-wordmark-creme.png?v=5" alt="Pickloop" style={{ height: 48, marginBottom: 18 }} />
-            <h1 className="font-extrabold tracking-tight" style={{ fontSize: "clamp(36px,6.5vw,64px)", lineHeight: 1.08 }}>
-              Une innovation française au service du quotidien
-            </h1>
-            <p className="subtitle" style={{ marginTop: 12, maxWidth: 720 }}>
-              Porté par <strong>Kevcyr SASU</strong>, Pickloop développe un réseau de casiers connectés pour faciliter l’accès à des objets utiles, 24/7, de façon simple, traçable et durable.
-            </p>
+{/* HERO VARIANT – full width + padding fluide */}
+<section
+  className="relative overflow-hidden"
+  style={{
+    background: "linear-gradient(180deg, #1A2C25 0%, var(--vert-deep) 28%, #2F6A52 56%, var(--accent) 100%)",
+    color: "var(--light)",
+    padding: "96px 5vw",
+  }}
+>
+  <div
+    className="z-10 relative"
+    style={{
+      width: "100%",
+      maxWidth: "1200px",
+      margin: "0 auto",
+      display: "grid",
+      gap: 24,
+      gridTemplateColumns: "minmax(300px,1.2fr) minmax(260px,1fr)",
+      alignItems: "center",
+    }}
+  >
+    {/* Texte à gauche */}
+    <div>
+      <img
+        src="/logo-wordmark-creme.png?v=5"
+        alt="Pickloop"
+        style={{ height: 64, marginBottom: 18 }} // 👈 logo plus grand
+      />
+      <h1 className="font-extrabold tracking-tight" style={{ fontSize: "clamp(36px,6.5vw,64px)", lineHeight: 1.08 }}>
+        Une innovation française au service du quotidien
+      </h1>
+      <p className="subtitle" style={{ marginTop: 12, maxWidth: 720 }}>
+        Porté par <strong>Kevcyr SASU</strong>, Pickloop développe un réseau de casiers connectés
+        pour faciliter l’accès à des objets utiles, 24/7, de façon simple, traçable et durable.
+      </p>
 
-            <div className="cta" style={{ marginTop: 22 }}>
-              <a href="/collectivites" className="btn" style={{ background: "var(--vert)", color: "#fff", borderColor: "var(--vert)" }}>
-                Voir les solutions collectivités
-              </a>
-              <a href="/faq" className="btn secondary">Consulter la FAQ</a>
-            </div>
-          </div>
+      <div className="cta" style={{ marginTop: 22 }}>
+        <a href="/collectivites" className="btn" style={{ background: "var(--vert)", color: "#fff", borderColor: "var(--vert)" }}>
+          Voir les solutions collectivités
+        </a>
+        {/* Bouton FAQ retiré (point 6) */}
+      </div>
+    </div>
 
-          {/* Collage à droite */}
-          <div aria-hidden="true" style={{ position: "relative", height: 360 }}>
-            <div style={{
-              position: "absolute", top: 0, right: 0, width: 240, height: 160,
-              background: "#fff", borderRadius: 16, overflow: "hidden",
-              boxShadow: "0 18px 60px rgba(0,0,0,.20)"
-            }}>
-              <img src="/steps/scan.png" alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }}/>
-            </div>
-            <div style={{
-              position: "absolute", bottom: 20, left: 0, width: 260, height: 180,
-              background: "#fff", borderRadius: 16, overflow: "hidden",
-              boxShadow: "0 18px 60px rgba(0,0,0,.20)", transform: "rotate(-4deg)"
-            }}>
-              <img src="/steps/take.png" alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }}/>
-            </div>
-            <div style={{
-              position: "absolute", top: 120, left: 140, width: 220, height: 160,
-              background: "#fff", borderRadius: 16, overflow: "hidden",
-              boxShadow: "0 18px 60px rgba(0,0,0,.20)", transform: "rotate(6deg)"
-            }}>
-              <img src="/steps/return.png" alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }}/>
-            </div>
-          </div>
-        </div>
+    {/* Collage à droite (illustration remaniée – cf. point 4) */}
+    <div aria-hidden="true" style={{ position: "relative", height: 380 }}>
+      {/* Carte 1 */}
+      <div style={{
+        position: "absolute", top: 0, right: 10, width: 260, height: 170,
+        background: "#fff", borderRadius: 16, overflow: "hidden",
+        boxShadow: "0 18px 60px rgba(0,0,0,.18)", transform: "rotate(3deg)"
+      }}>
+        <img src="/steps/return.png" alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }}/>
+      </div>
+      {/* Carte 2 (centrée au-dessus) */}
+      <div style={{
+        position: "absolute", top: 90, left: 10, width: 240, height: 160,
+        background: "#fff", borderRadius: 16, overflow: "hidden",
+        boxShadow: "0 18px 60px rgba(0,0,0,.18)", transform: "rotate(-6deg)"
+      }}>
+        <img src="/steps/scan.png" alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }}/>
+      </div>
+      {/* Carte 3 */}
+      <div style={{
+        position: "absolute", bottom: 0, left: 90, width: 260, height: 180,
+        background: "#fff", borderRadius: 16, overflow: "hidden",
+        boxShadow: "0 18px 60px rgba(0,0,0,.18)"
+      }}>
+        <img src="/steps/take.png" alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }}/>
+      </div>
+    </div>
+  </div>
 
-        <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/5 to-black/20 pointer-events-none" />
-      </section>
+  <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/5 to-black/20 pointer-events-none" />
+</section>
 
       {/* MISSION */}
       <section aria-labelledby="about-mission-title" className="steps-wrap">
