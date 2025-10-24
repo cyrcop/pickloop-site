@@ -32,13 +32,13 @@ export default function Hero() {
         <div className="cta mt-[clamp(16px,3vw,34px)] flex justify-center flex-wrap gap-4">
           <a
             href="#contact"
-            className="btn bg-white text-[var(--vert)] border border-white/40 hover:bg-[var(--accent)] hover:text-[#111] hover:border-[var(--accent)] transition-all"
+className="btn bg-[var(--light)] text-[var(--vert)] border border-[var(--light)]/40 hover:bg-[var(--accent)] hover:text-[#111] hover:border-[var(--accent)] transition-all"
           >
             Demander la présentation
           </a>
           <a
             href="#fonctionnement"
-            className="btn secondary bg-transparent border border-white/60 text-white hover:bg-white/10 hover:border-white transition-all"
+           className="btn secondary bg-transparent border border-[var(--light)]/60 text-[var(--light)] hover:bg-[var(--light)]/10 hover:border-[var(--light)] transition-all"
           >
             Comment ça marche
           </a>
